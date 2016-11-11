@@ -1,3 +1,9 @@
 m hjvhyjuv
 
+<<<<<<< HEAD
 gejejejeje
+=======
+
+
+jestes pedalem :D
+>>>>>>> origin/master
