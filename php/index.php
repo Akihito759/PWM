@@ -14,10 +14,15 @@
 <head>
 <meta charset="uft-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+<link rel="stylesheet" href="style_login.css" type="text/css" />
+
 </head>
 
 
 <body>
+
+<div id="container">
 
 <form action="zaloguj.php" method="post">
  
@@ -30,7 +35,7 @@
   <form action="rejestracja.php" method="post">
   <input type="submit" value="Sing Up"/>
   </form>
-  
+  </div>
   
   <?php
   if(isset($_SESSION['blad']))	echo $_SESSION['blad'];

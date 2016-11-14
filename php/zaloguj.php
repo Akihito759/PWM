@@ -42,7 +42,7 @@
 					$rezultat->close();
 					
 					unset($_SESSION['blad']);
-					header('Location: /PWM/index.html');
+					header('Location: /PWM/php/promap.html');
 				}
 				else
 				{
@@ -56,7 +56,7 @@
 			else
 			{
 				$_SESSION['blad']= '<span style="color:red"> Unvailid login or password!</span>';
-				header('Location: index.php');
+				header('Location: /../PWM/login.php');
 			}
 			
 		

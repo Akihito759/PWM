@@ -4,7 +4,7 @@
 	if(!isset($_SESSION['udanarejestracja']))
 	{
 		
-		header('Location: /PWM/php/index.php');
+		header('Location: /PWM/zaloguj.php');
 		exit();
 	}
 	else
@@ -28,33 +28,54 @@
 ?>
 
 
-<!DOCTYPE HTML>
 <html lang="pl">
 <head>
-<meta charset="uft-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta charset="utf-8" />
+	<title>Stylizowanie formularzy</title>
+	<meta name="keywords" content="css, odcinek" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		
+	<link rel="stylesheet" href="../assets/css/login_style.css" type="text/css" />
+	
 </head>
-
 
 <body>
 
-	Now you can log in!
+	<div id="title">
+	Pocket World Map
+	
+	<hr width="20%" />
+	</div>
 
-<form action="zaloguj.php" method="post">
- 
-  Login: <br /> <input type="text" name="login" /> <br />
-  Password: <br /> <input type="password" name="password" /> <br /> <br />
-  <input type="submit" value="Log In" />
-  
-  </form>
-  
-  <form action="rejestracja.php" method="post">
-  <input type="submit" value="Sing Up"/>
-  </form>
-  
-  
-  <?php
+	<div id="container_login">
+	
+			<form action = "php/zaloguj.php" method = "post">
+			
+						Now you can log in!
+						
+					<input type="text" placeholder="Login" name="login">
+			
+			
+					<input type="password"  placeholder="Password" name="password">
+			
+	  <?php
   if(isset($_SESSION['blad']))	echo $_SESSION['blad'];
   ?>
-  
-  </body>
+			
+					<input type="submit"value="Sing In"> 
+			
+			
+			
+				</form>
+		
+		<form action="php/rejestracja.php" method="post">
+		
+				<input type="submit"value="Sing Up">
+			
+		</form>
+		
+		
+	</div>
+	
+	
+</body>
