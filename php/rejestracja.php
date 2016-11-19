@@ -163,6 +163,7 @@
 <meta charset="uft-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
+	<link rel="stylesheet" href="../assets/css/login_style.css" type="text/css" />
 <script src='https://www.google.com/recaptcha/api.js'></script>
 
 <style>
@@ -177,7 +178,12 @@
 
 
 <body>
-
+	<div id="title">
+	Pocket World Map
+	
+	<hr width="20%" />
+	</div>
+<div id="container_login">
 	<form method="post">
 	
 	Nickname: <br /> <input type="text" value="<?php
@@ -278,7 +284,7 @@
 	<br/>
 	
 	<input type="submit" value="Sing Up"/>
-	
+	</div>
 	</form>
 
 
