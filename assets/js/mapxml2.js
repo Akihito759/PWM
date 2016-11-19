@@ -29,6 +29,26 @@ function mapaStart()
 				
 				wczytajMarkery();
 				
+				$.get(
+					'/PWM/php/load.php', 
+					function(dane)
+					{
+						var daneJSON = eval('('+dane+')'); // parsowanie
+
+						for(var i=0; i<daneJSON.length; i++)
+						{
+							var lat			=	daneJSON[i].lat; // nie ma potrzeby konwertowania do liczby zmiennoprzecinkowej
+							var lon			=	daneJSON[i].lng;
+							var desc		=	daneJSON[i].description;
+							
+							dodajMarkerphp(mapa, lat, lon, desc);
+						}
+
+						alert('Wczytano '+daneJSON.length+' markerów z pliku dane.php');
+					}
+				);		
+			  
+			
 				google.maps.event.addListener(mapa,'click',function(zdarzenie)
 				{
 					if(zdarzenie.latLng)	
@@ -53,7 +73,7 @@ function wczytajMarkery()
 						var nazwa		=	markery[i].attributes.getNamedItem("nazwa").nodeValue;
 						var marker		=	dodajMarker(lat,lon,ikona_url,nazwa);
 					}
-					alert('Wczytano '+markery.length+' markerów z pliku dane1.xml');
+					//alert('Wczytano '+markery.length+' markerów z pliku dane1.xml');
 				},'xml','get');
 			}
 		
@@ -85,6 +105,8 @@ function dodajMarker(lat,lon,ikona_url,nazwa)
 	
 	
 }
+
+
 function dodajmojMarker(latlng)
 {
 	var marker	=	new google.maps.Marker(
@@ -105,15 +127,15 @@ function dodajmojMarker(latlng)
 		dymek.open(mapa);
 	});
 	
-	google.maps.event.addListener(marker,'rightclick',function()
+	/*google.maps.event.addListener(marker,'rightclick',function()
 				{
 					marker.usun();
-				});
+				});*/
 				
 				markers.push(marker);
 }
 
-google.maps.Marker.prototype.usun = function()
+/*google.maps.Marker.prototype.usun = function()
 			{
 				if(confirm('Czy na pewno usunąć ten marker?'))
 				{
@@ -128,7 +150,7 @@ google.maps.Marker.prototype.usun = function()
 					
 				}
 			}
-		
+*/		
 function pobierzIkone()
 {
 				var rozmiar				= new google.maps.Size(32,32);
@@ -140,3 +162,24 @@ function pobierzIkone()
 				
 				return ikona;
 			}
+			
+			
+
+
+function dodajMarkerphp(mapa, lat,lon,desc)
+			{
+				var marker = new google.maps.Marker
+				(
+					{
+						map: 		mapa, 
+						position: 	new google.maps.LatLng(lat, lon),
+					}
+				);
+				
+				google.maps.event.addListener(marker,'click',function(zdarzenie)
+				{
+					dymek.setContent('<br /><strong>' + desc + '</strong>'); 
+					dymek.setPosition(marker.getPosition()); 
+					dymek.open(mapa);
+				});
+			}			
