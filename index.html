@@ -62,11 +62,7 @@ function initMap() {
 	  mapTypeiD: 'roadmap'
     });
 	
-	var test_marker = new google.maps.Marker({
-    position: new google.maps.LatLng(-33.886111,151.21111099999996),
-    map: map
-  });
-	
+
 	
 		$.get(
 					'php/dane.php', 
@@ -80,7 +76,7 @@ function initMap() {
 							var lon			=	daneJSON[i].g_long;
 							var nazwa		=	daneJSON[i].description;
 							
-								addMarker(lat,lon);
+								addMarker(lat,lon,nazwa);
 				
 						}
 
@@ -153,12 +149,12 @@ function initMap() {
         document.getElementById('lat').innerHTML = place.geometry.location.lat();
         document.getElementById('lon').innerHTML = place.geometry.location.lng();
 		
-		var stringValue = 'Latitude:<input name="value[' + 
-			locationsCounter + '][0]" type="text" value="' +
+		var stringValue = '<input name="value[' + 
+			locationsCounter + '][0]" type="hidden" value="' +
 			place.geometry.location.lat()  +
-			'" >Longitude:<input name="value[' +
+			'" <input name="value[' +
 			locationsCounter +
-			'][1]" type="text" value="' +
+			'][1]" type="hidden" value="' +
 			place.geometry.location.lng() +
 			'">Description:<input name="value[' +
 			locationsCounter +
@@ -169,12 +165,23 @@ function initMap() {
 		
     });
 	}
-	
-    function addMarker(lat,lon) {
-          var test_marker = new google.maps.Marker({
-	position: new google.maps.LatLng(lat,lon),
-    map: map
-  });
+	 
+
+    function addMarker(lat,lon,nazwa) {
+          var marker = new google.maps.Marker(
+		  {
+			position: new google.maps.LatLng(lat,lon),
+			map: map
+			
+		  });
+		   var infowindow = new google.maps.InfoWindow({
+          content: nazwa + country
+				});
+		  
+			marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+				
         }
 	
 	</script>
