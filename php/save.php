@@ -41,8 +41,8 @@ mysqli_select_db($connection,$db_name) or die("Could not select database");
 
 $post = $_POST['value'];
 
-$values = '(NULL,'.implode('),(', array_map(function($entry){
-	return "'".implode("','", $entry)."'";
+$values = '('.implode('),(', array_map(function($entry){
+	return "NULL,'".implode("','", $entry)."'";
 }, $post)).')';
 
 $sql = "INSERT INTO markers  VALUES $values";
