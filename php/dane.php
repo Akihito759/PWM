@@ -1,31 +1,34 @@
-<?
-header('Content-Type: text/javascript; charset=utf-8');
+<?php
 
-  
+
 require_once "connect_sql.php";
   
-mysql_connect ($host, $db_user, $db_password) or   
-    die ("Nie nawišzano połšczenie z bazš MySQL");  
-mysql_select_db ($db_name) or   
-    die ("Nie nawišzano połšczenia z bazš serwisu.");  
+$connection=new mysqli($host,$db_user,$db_password,$db_name);
+
+ if($connection->connect_errno!=0){
+	echo "Error:".$connection->connect_errno;
+}
+
 	
-mysql_query("SET NAMES 'UTF8';");
+mysqli_select_db($connection,$db_name) or die("Could not select database");
 
-$zapytanie = "SELECT id,nazwa,lat,lng,flaga FROM PoznajGoogleMaps_panstwa ORDER BY id";
-$pobierz = mysql_query($zapytanie);
+$sql = "SELECT id,lat,g_long,description FROM markers ORDER BY id";
 
-include('jsonencoder.php');
+$connection->query($sql);
+
+$result =  $connection->query($sql);
+
+include('JSON.php');
 $json = new Services_JSON();
 
 $tablica = array();
 
-while($dane = mysql_fetch_array($pobierz))
+while($row = $result->fetch_assoc())
 {
 	$panstwo = array(
-	'nazwa' => $dane['nazwa'],
-	'lat' => (float) $dane['lat'],
-	'lng' => (float) $dane['lng'],
-	'ikona' => $dane['flaga']
+	'description' => $row["description"],
+	'lat' => (float) $row["lat"],
+	'g_long' => (float) $row["g_long"]
 	);
 	array_push($tablica,$panstwo);
 }

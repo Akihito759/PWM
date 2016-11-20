@@ -4,7 +4,7 @@ session_start();
 
 require_once "connect_sql.php";
 
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 
 $connection=new mysqli($host,$db_user,$db_password,$db_name);
 	if($connection->connect_errno!=0) #zajscie bledu
@@ -30,7 +30,8 @@ $connection->query("INSERT INTO markers VALUES".$sql);
 
 
 
-=======
+======= */
+
 $connection=new mysqli($host,$db_user,$db_password,$db_name);
 if($connection->connect_errno!=0){
 	echo "Error:".$connection->connect_errno;
@@ -40,13 +41,19 @@ mysqli_select_db($connection,$db_name) or die("Could not select database");
 
 $post = $_POST['value'];
 
-$values = '('.implode('),(', array_map(function($entry){
+$values = '(NULL,'.implode('),(', array_map(function($entry){
 	return "'".implode("','", $entry)."'";
 }, $post)).')';
 
-$sql = "INSERT INTO markers (lat, lng, location) VALUES $values";
-$connection->query($sql);
->>>>>>> refs/remotes/origin/Damian
+$sql = "INSERT INTO markers  VALUES $values";
+
+if ($connection->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $connection->error;
+}
+
+
 
 die();  
 
