@@ -39,7 +39,7 @@ session_start();
 <div id="map"></div>
 <ul id="geoData">
     <li>Full Address: <span id="location"></span></li>
-    <li>Postal Code: <span id="postal_code"></span></li>
+   <!-- <li>Postal Code: <span id="postal_code"></span></li> -->
     <li>Country: <span id="country"></span></li>
     <li>Latitude: <span id="lat"></span></li>
     <li>Longitude: <span id="lon"></span></li>
@@ -48,13 +48,14 @@ session_start();
 
 
 			<form action="php/save.php" method="POST">
-
+			
+<div id="select_marker" class="styled-select">
 			<select name="icon">
   <option value="mm_20_yellow.png"> I was there</option>
   <option value="mm_20_blue.png">I want to visit </option>
   <option value="mm_20_red.png">My own marker</option>
 </select>			
-
+</div>
 
 			<div id="value">
 			
