@@ -44,7 +44,7 @@
   if(isset($_SESSION['blad']))	echo $_SESSION['blad'];
   ?>
 			
-					<input type="submit"value="Sing In"> 
+					<input type="submit"value="Sign In"> 
 			
 			
 			
@@ -52,7 +52,7 @@
 		
 		<form action="php/rejestracja.php" method="post">
 		
-				<input type="submit"value="Sing Up">
+				<input type="submit"value="Sign Up">
 			
 		</form>
 		

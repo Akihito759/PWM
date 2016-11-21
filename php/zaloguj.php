@@ -42,7 +42,7 @@
 					$rezultat->close();
 					
 					unset($_SESSION['blad']);
-					header('Location: /PWM/php/promap.html');
+					header('Location: /PWM/index.html');
 				}
 				else
 				{

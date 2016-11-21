@@ -12,7 +12,7 @@ $connection=new mysqli($host,$db_user,$db_password,$db_name);
 	
 mysqli_select_db($connection,$db_name) or die("Could not select database");
 
-$sql = "SELECT id,lat,g_long,description FROM markers ORDER BY id";
+$sql = "SELECT id,lat,g_long,description,place,Icon FROM markers ORDER BY id";
 
 $connection->query($sql);
 
@@ -28,7 +28,9 @@ while($row = $result->fetch_assoc())
 	$panstwo = array(
 	'description' => $row["description"],
 	'lat' => (float) $row["lat"],
-	'g_long' => (float) $row["g_long"]
+	'g_long' => (float) $row["g_long"],
+	'place' => $row["place"],
+	'Icon' => $row["Icon"]
 	);
 	array_push($tablica,$panstwo);
 }

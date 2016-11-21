@@ -41,14 +41,21 @@ mysqli_select_db($connection,$db_name) or die("Could not select database");
 
 $post = $_POST['value'];
 
-$values = '('.implode('),(', array_map(function($entry){
-	return "NULL,'".implode("','", $entry)."'";
-}, $post)).')';
+$icon = $_POST['icon'];
 
-$sql = "INSERT INTO markers  VALUES $values";
+echo $icon;
+
+$values = '('.implode('),(', array_map(function($entry){
+	return "NULL,'".implode("','", $entry)."','".$_POST['icon']."'";
+}, $post)).")"; 
+
+//print_r($values);
+
+$sql = "INSERT INTO markers (id,lat,g_long,place,description,icon)  VALUES $values";
 
 if ($connection->query($sql) === TRUE) {
     echo "New record created successfully";
+	header('Location: ../index.html');
 } else {
     echo "Error: " . $sql . "<br>" . $connection->error;
 }

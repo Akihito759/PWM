@@ -20,9 +20,10 @@ session_start();
 		 <script src="assets/js/jquery-3.1.1.min.js"></script>
 		 
 	
-		 <form align="right" name="form1" method="post" action="logout.php">
+		 <form  name="form1" method="post" action="php/logout.php">
 		 
-			<input name="submit2" type="submit" id="submit2" class="logoutLblPos" value="Log Out">
+		 <input name="submit2" type="submit" id="submit2" value="Log Out">
+			
 		
 		</form>
 	
@@ -43,7 +44,18 @@ session_start();
     <li>Latitude: <span id="lat"></span></li>
     <li>Longitude: <span id="lon"></span></li>
 </ul>
+
+
+
 			<form action="php/save.php" method="POST">
+
+			<select name="icon">
+  <option value="mm_20_yellow.png"> I was there</option>
+  <option value="mm_20_blue.png">I want to visit </option>
+  <option value="mm_20_red.png">My own marker</option>
+</select>			
+
+
 			<div id="value">
 			
 			</div>
@@ -53,12 +65,13 @@ session_start();
 <script>
 
 var map ;
+var iconBase = ' http://labs.google.com/ridefinder/images/';
 
 function initMap() {
 
      map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: -33.8688, lng: 151.2195},
-      zoom: 13,
+      center: {lat: 54.20, lng: 20.59},
+      zoom: 6,
 	  mapTypeiD: 'roadmap'
     });
 	
@@ -75,13 +88,17 @@ function initMap() {
 							var lat			=	daneJSON[i].lat; // nie ma potrzeby konwertowania do liczby zmiennoprzecinkowej
 							var lon			=	daneJSON[i].g_long;
 							var nazwa		=	daneJSON[i].description;
+							var place      = daneJSON[i].place;
+							var icon 		= daneJSON[i].Icon;
 							
-								addMarker(lat,lon,nazwa);
+							//document.write(icon);
+							
+								addMarker(lat,lon,nazwa,place,icon);
 				
 						}
 
-						alert('Wczytano '+daneJSON.length+' markerów z pliku dane.php');
-					});
+					//	alert('Wczytano '+daneJSON.length+' markerów z pliku dane.php');
+					}); 
 			
 		
 	
@@ -152,13 +169,14 @@ function initMap() {
 		var stringValue = '<input name="value[' + 
 			locationsCounter + '][0]" type="hidden" value="' +
 			place.geometry.location.lat()  +
-			'" <input name="value[' +
+			'" ><input name="value[' +
 			locationsCounter +
 			'][1]" type="hidden" value="' +
-			place.geometry.location.lng() +
+			place.geometry.location.lng() + '" >Place:<input name="value[' 
+			+ locationsCounter + '][2]" type="text" value="' +  place.formatted_address +
 			'">Description:<input name="value[' +
 			locationsCounter +
-			'][2]" type="text"/> <br/>';	
+			'][3]" type="text"/>'
 			locationsCounter++;
 		
 		$("#value").append(stringValue);
@@ -167,15 +185,16 @@ function initMap() {
 	}
 	 
 
-    function addMarker(lat,lon,nazwa) {
+    function addMarker(lat,lon,nazwa,place,icon) {
+	
           var marker = new google.maps.Marker(
 		  {
 			position: new google.maps.LatLng(lat,lon),
-			map: map
-			
+			map: map,
+			icon: iconBase+icon
 		  });
 		   var infowindow = new google.maps.InfoWindow({
-          content: nazwa + country
+          content: "<b>"+place+"</b></br></br>"+nazwa		  
 				});
 		  
 			marker.addListener('click', function() {

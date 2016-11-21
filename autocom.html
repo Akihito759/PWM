@@ -101,10 +101,11 @@ function initMap() {
 			'" >Longitude:<input name="value[' +
 			locationsCounter +
 			'][1]" type="text" value="' +
-			place.geometry.location.lng() +
+			place.geometry.location.lng() + '" >Longitude:<input name="value[' 
+			+ locationsCounter + '][2]" type="text" value="' +  place.formatted_address +
 			'">Description:<input name="value[' +
 			locationsCounter +
-			'][2]" type="text"/> <br/>';	
+			'][3]" type="text"/> <br/>' ;	
 			locationsCounter++;
 		
 		$("#value").append(stringValue);
