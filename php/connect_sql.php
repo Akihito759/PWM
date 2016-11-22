@@ -1,6 +1,6 @@
 <?php
-	$host= "databases.000webhost.com";
-	$db_user ="id226011_pwm_admin";
-	$db_password ="admin1";
-	$db_name = "id226011_pwm";
+	$host= "mysql4.gear.host";
+	$db_user ="pwm";
+	$db_password ="My7Zvmn~6i_u";
+	$db_name = "pwm";
 ?>
