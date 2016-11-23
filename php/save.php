@@ -43,19 +43,21 @@ $post = $_POST['value'];
 
 $icon = $_POST['icon'];
 
-echo $icon;
+$id =$_SESSSION['id'];
+
+echo $id;
 
 $values = '('.implode('),(', array_map(function($entry){
-	return "NULL,'".implode("','", $entry)."','".$_POST['icon']."'";
+	return "NULL,'".implode("','", $entry)."','".$_POST['icon']."','".$_SESSION['id']."'";
 }, $post)).")"; 
 
 //print_r($values);
 
-$sql = "INSERT INTO markers (id,lat,g_long,place,description,icon)  VALUES $values";
+$sql = "INSERT INTO markers (id,lat,g_long,place,description,icon,user_id)  VALUES $values";
 
 if ($connection->query($sql) === TRUE) {
     echo "New record created successfully";
-	header('Location: ../index.html');
+	header('Location: ../index.php');
 } else {
     echo "Error: " . $sql . "<br>" . $connection->error;
 }

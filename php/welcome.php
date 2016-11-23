@@ -4,7 +4,7 @@
 	if(!isset($_SESSION['udanarejestracja']))
 	{
 		
-		header('Location: /PWM/zaloguj.php');
+		header('Location: zaloguj.php');
 		exit();
 	}
 	else
@@ -49,7 +49,7 @@
 
 	<div id="container_login">
 	
-			<form action = "php/zaloguj.php" method = "post">
+			<form action = "zaloguj.php" method = "post">
 			
 						Now you can log in!
 						
@@ -68,7 +68,7 @@
 			
 				</form>
 		
-		<form action="php/rejestracja.php" method="post">
+		<form action="rejestracja.php" method="post">
 		
 				<input type="submit"value="Sing Up">
 			

@@ -27,7 +27,7 @@ $username=$_SESSION['id'] ;
 			
 		
 		</form>
-	<p>Welcome <?php echo $username; ?> </p>
+	<!--<p>Welcome <?php // echo $username; ?> </p> -->
 	<div id="title">
 	Pocket World Map
 	
@@ -92,10 +92,11 @@ function initMap() {
 							var nazwa		=	daneJSON[i].description;
 							var place      = daneJSON[i].place;
 							var icon 		= daneJSON[i].Icon;
+							var user_id   =daneJSON[i].user_id;
 							
 							//document.write(icon);
 							
-								addMarker(lat,lon,nazwa,place,icon);
+						if(user_id==<?php echo $_SESSION['id']?>)	addMarker(lat,lon,nazwa,place,icon);
 				
 						}
 
