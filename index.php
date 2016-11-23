@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-$username=$GET['test'] ;
+$username=$_SESSION['id'] ;
 ?>
 <html>
     <head>
@@ -27,7 +27,7 @@ $username=$GET['test'] ;
 			
 		
 		</form>
-	<?php echo 'pierdol sie' ?>
+	<p>Welcome <?php echo $username; ?> </p>
 	<div id="title">
 	Pocket World Map
 	

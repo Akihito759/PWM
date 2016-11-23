@@ -4,7 +4,7 @@
 	
 	if((isset($_SESSION['login']))&&($_SESSION['login']==true))
 	{
-		header('Location: /PWM/php/promap.html');
+		header('Location: /php/index.html');
 		exit();
 	} 
 ?>
