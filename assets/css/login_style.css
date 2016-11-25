@@ -66,6 +66,13 @@ color: white;
 color: white;
 }
 
+#logout
+{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
 input[type=text],
 input[type=password]
 {
