@@ -23,7 +23,7 @@ $username=$_SESSION['id'] ;
 	<div id="logout">
 		 <form  name="form1" method="post" action="php/logout.php">
 		 
-		 <input name="submit2" type="submit" id="submit2" value="Log Out">
+		 <input name="submit2" type="submit" id="submit2"  class="main" value="Log Out">
 			
 		
 		</form>
@@ -63,7 +63,7 @@ $username=$_SESSION['id'] ;
 			
 			</div>
 			
-	<input type="submit" >
+	<input type="submit" class="main">
 
 <script>
 

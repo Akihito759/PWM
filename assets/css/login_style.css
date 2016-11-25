@@ -64,6 +64,9 @@ color: white;
 #value
 {
 color: white;
+    position: relative;
+    left: 200px;
+    margin-top: -50px;
 }
 
 #logout
@@ -72,6 +75,8 @@ color: white;
     right: 0px;
     top: 0px;
 }
+
+
 
 input[type=text],
 input[type=password]
@@ -116,6 +121,22 @@ input[type=submit]
 	
 }
 
+input[type=submit].main
+{
+    width: 90px;
+    background-color: #36b03c;
+    font-size: 15px;
+    color: white;
+    padding: 15px 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    outline: none;
+
+}
+
 input[type=submit]:focus
 {
 	webkit-box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
@@ -137,7 +158,7 @@ input[type=submit]:hover
 
 .styled-select select {
    background: transparent;
-   width: 268px;
+   width: 150px;
    padding: 5px;
    font-size: 16px;
    line-height: 1;
@@ -148,7 +169,7 @@ input[type=submit]:hover
    }
 
 .styled-select {
-   width: 240px;
+   width: 150px;
    height: 34px;
    overflow: hidden;
    background: url(https://bavotasan.com/wp-content/uploads/2011/05/down_arrow_select.jpg) no-repeat right #ddd;
