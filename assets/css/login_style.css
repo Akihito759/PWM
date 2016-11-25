@@ -60,13 +60,18 @@ html, body {
 li{
 color: white;
 }
+#send
+{
+	left: 550px;
+    position: relative;
+}
 
 #value
 {
 color: white;
     position: relative;
     left: 200px;
-    margin-top: -100px;
+    margin-top: -150px;
 }
 
 #logout
@@ -74,6 +79,7 @@ color: white;
     position: absolute;
     right: 0px;
     top: 0px;
+	z-index: 1; //dzięki temu button możę być nałozony na inną warstwę 
 }
 
 
@@ -123,7 +129,7 @@ input[type=submit]
 
 input[type=submit].main
 {
-    width: 90px;
+   width: 90px;
     background-color: #36b03c;
     font-size: 15px;
     color: white;
@@ -179,7 +185,7 @@ input[type=submit]:hover
 
 .styled-select select {
    background: transparent;
-   width: 268px;
+   width: 150px;
    padding: 5px;
    font-size: 16px;
    line-height: 1;
@@ -192,7 +198,6 @@ input[type=submit]:hover
 
 #title
 {
-	margin-top: 50px;
 	font-family: 'Pacifico';
 	color: white;
 	font-weight: 500;
