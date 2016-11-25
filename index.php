@@ -62,9 +62,9 @@ $username=$_SESSION['id'] ;
 			<div id="value">
 			
 			</div>
-			
+		<div id="send">
 	<input type="submit" class="main">
-
+</div>
 <script>
 
 var map ;
