@@ -27,14 +27,13 @@ $username=$_SESSION['id'] ;
 		 <input name="submit4" type="submit"  class="main" value="Log Out">
 		 
 		</form>
-		
 	</div>
 	
 	<!--<p>Welcome <?php // echo $username; ?> </p> -->
 	<div id="title">
 	Pocket World Map
 	
-	<hr width="20%" />
+	<hr width="40%" />
 	</div>
 	
 	
@@ -42,11 +41,11 @@ $username=$_SESSION['id'] ;
 	<input id="searchInput" class="controls" type="text" placeholder="Enter a location">
 <div id="map"></div>
 <ul id="geoData">
-    <li>Full Address: <span id="location"></span></li>
+    <li><b>Full Address:</b> <span id="location"></span></li>
    <!-- <li>Postal Code: <span id="postal_code"></span></li> -->
-    <li>Country: <span id="country"></span></li>
-    <li>Latitude: <span id="lat"></span></li>
-    <li>Longitude: <span id="lon"></span></li>
+    <li><b>Country:</b> <span id="country"></span></li>
+    <li><b>Latitude:</b> <span id="lat"></span></li>
+    <li><b>Longitude:</b> <span id="lon"></span></li>
 </ul>
 
 
@@ -76,7 +75,7 @@ function initMap() {
 
      map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 54.20, lng: 20.59},
-      zoom: 6,
+      zoom: 5,
 	  mapTypeiD: 'roadmap'
     });
 	
@@ -96,10 +95,11 @@ function initMap() {
 							var place      = daneJSON[i].place;
 							var icon 		= daneJSON[i].Icon;
 							var user_id   =daneJSON[i].user_id;
+							var id 			=daneJSON[i].id;
 							
 							//document.write(icon);
 							
-						if(user_id==<?php echo $_SESSION['id']?>)	addMarker(lat,lon,nazwa,place,icon);
+						if(user_id==<?php echo $_SESSION['id']?>)	addMarker(lat,lon,nazwa,place,icon,user_id,id);
 				
 						}
 
@@ -191,7 +191,7 @@ function initMap() {
 	}
 	 
 
-    function addMarker(lat,lon,nazwa,place,icon) {
+    function addMarker(lat,lon,nazwa,place,icon,user_id,id) {
 	
           var marker = new google.maps.Marker(
 		  {
@@ -199,9 +199,12 @@ function initMap() {
 			map: map,
 			icon: iconBase+icon
 		  });
+		  var  marker_delete_string='<form action = "php/delete_marker.php" method = "post"> <input type="hidden" name="sql_id" value="'+id+'"> <input name="submit4" type="submit"  class="main" value="Remove"></form>';
+		  var marker_desc_edit='<button onclick="myFunction()">Click me</button>';
 		   var infowindow = new google.maps.InfoWindow({
-          content: "<b>"+place+"</b></br></br>"+nazwa		  
+          content: '<b>'+place+'</b></br></br>'+nazwa+marker_delete_string+marker_desc_edit
 				});
+		
 		  
 			marker.addListener('click', function() {
           infowindow.open(map, marker);

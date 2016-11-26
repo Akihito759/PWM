@@ -26,6 +26,7 @@ $tablica = array();
 while($row = $result->fetch_assoc())
 {
 	$panstwo = array(
+	'id' => $row['id'],
 	'description' => $row["description"],
 	'lat' => (float) $row["lat"],
 	'g_long' => (float) $row["g_long"],
