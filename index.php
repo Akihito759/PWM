@@ -20,52 +20,46 @@ $username=$_SESSION['id'] ;
 		 <body>
 		 <script src="assets/js/jquery-3.1.1.min.js"></script>
 		 
-		 <div id="menu">
-<a href="login.php"><button type="submit" >Home</button></a>
- <a href="us.html" >  <button type="submit" class="msgBtn2" onClick="wp.pl;">About Us</button> </a>
-  <a href="about.html"> <button type="submit">Project</button></a>
-</div>
+		 
+		<div id="menu">
+		<a href="login.php"><button type="submit" >Home</button></a>
+		<a href="us.html" >  <button type="submit" >About Us</button> </a>
+		<a href="about.html"> <button type="submit">Project</button></a>
+		</div>
 
-	<div id="logout">
+		<div id="logout">
+			<form  name="form1" method="post" action="php/logout.php">
+			<input name="submit4" type="submit"  class="main" value="Log Out"> 
+			</form>
+		</div>
 	
-		 <form  name="form1" method="post" action="php/logout.php">
-		 
-		 <input name="submit4" type="submit"  class="main" value="Log Out">
-		 
-		</form>
-		
-	</div>
-	
-	<!--<p>Welcome <?php // echo $username; ?> </p> -->
-	<div id="title">
-	Pocket World Map
-	
-	<hr width="20%" />
-	</div>
+		<div id="title">
+				Pocket World Map
+				<hr width="20%" />
+		</div>
 	
 	
 	
 	<input id="searchInput" class="controls" type="text" placeholder="Enter a location">
 <div id="map"></div>
-<ul id="geoData">
-    <li>Full Address: <span id="location"></span></li>
-   <!-- <li>Postal Code: <span id="postal_code"></span></li> -->
-    <li>Country: <span id="country"></span></li>
-    <li>Latitude: <span id="lat"></span></li>
-    <li>Longitude: <span id="lon"></span></li>
-</ul>
+	<ul id="geoData">
+		<li>Full Address: <span id="location"></span></li>
+		<!-- <li>Postal Code: <span id="postal_code"></span></li> -->
+		<li>Country: <span id="country"></span></li>
+		<li>Latitude: <span id="lat"></span></li>
+		<li>Longitude: <span id="lon"></span></li>
+	</ul>
 
 
 
-			<form action="php/save.php" method="POST">
-			
-<div id="select_marker" class="styled-select">
+		<form action="php/save.php" method="POST">
+		<div id="select_marker" class="styled-select">
 			<select name="icon">
-  <option value="mm_20_yellow.png"> I was there</option>
-  <option value="mm_20_blue.png">I want to visit </option>
-  <option value="mm_20_red.png">My own marker</option>
-</select>			
-</div>
+				<option value="mm_20_yellow.png"> I was there</option>
+				<option value="mm_20_blue.png">I want to visit </option>
+				<option value="mm_20_red.png">My own marker</option>
+			</select>			
+		</div>
 
 			<div id="value">
 			
@@ -73,6 +67,7 @@ $username=$_SESSION['id'] ;
 		<div id="send">
 	<input type="submit" >
 </div>
+
 <script>
 
 var map ;
