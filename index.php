@@ -21,13 +21,15 @@ $username=$_SESSION['id'] ;
 		 <script src="assets/js/jquery-3.1.1.min.js"></script>
 		 
 	<div id="logout">
+	
 		 <form  name="form1" method="post" action="php/logout.php">
 		 
-		 <input name="submit2" type="submit" id="submit2"  class="main" value="Log Out">
-			
-		
+		 <input name="submit4" type="submit"  class="main" value="Log Out">
+		 
 		</form>
+		
 	</div>
+	
 	<!--<p>Welcome <?php // echo $username; ?> </p> -->
 	<div id="title">
 	Pocket World Map
@@ -63,7 +65,7 @@ $username=$_SESSION['id'] ;
 			
 			</div>
 		<div id="send">
-	<input type="submit" class="main">
+	<input type="submit" >
 </div>
 <script>
 
