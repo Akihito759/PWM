@@ -20,6 +20,12 @@ $username=$_SESSION['id'] ;
 		 <body>
 		 <script src="assets/js/jquery-3.1.1.min.js"></script>
 		 
+		 <div id="menu">
+<a href="login.php"><button type="submit" >Home</button></a>
+ <a href="us.html" >  <button type="submit" class="msgBtn2" onClick="wp.pl;">About Us</button> </a>
+  <a href="about.html"> <button type="submit">Project</button></a>
+</div>
+
 	<div id="logout">
 	
 		 <form  name="form1" method="post" action="php/logout.php">
