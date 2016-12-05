@@ -60,6 +60,10 @@ html, body {
 li{
 color: white;
 }
+p{
+color: white;
+}
+
 
 #value
 {
@@ -121,6 +125,20 @@ input[type=submit]
 	
 }
 
+button{
+	width: 110px;
+    background-color: #36b03c;
+    font-size: 15px;
+    color: white;
+    padding: 15px 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    outline: none;
+}
+
 input[type=submit].main
 {
     width: 90px;
@@ -135,6 +153,35 @@ input[type=submit].main
     letter-spacing: 1px;
     outline: none;
 
+}
+
+input[type=submit].menu
+{
+    width: 150px;
+    background-color: #36b03c;
+    font-size: 15px;
+    color: white;
+    padding: 15px 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    outline: none;
+}
+
+.menu
+{
+display: inline-block;
+z-index:2;
+position: relative;
+}
+
+#menu
+{
+width:500px;
+z-index:2;
+position:relative;
 }
 
 input[type=submit]:focus
@@ -192,13 +239,25 @@ input[type=submit]:hover
 
 #title
 {
-	margin-top: 50px;
+	margin-top: -50px;
 	font-family: 'Pacifico';
 	color: white;
 	font-weight: 500;
     line-height: 2.1;
-    
 	 text-align: center;
+    font-size: 66px;
+    font-family: 'Pacifico';
+    padding-bottom: 10px;
+    position: relative;
+}
+
+#Our_project{
+	margin-top: -50px;
+	font-family: 'Pacifico';
+	color: green;
+	font-weight: 500;
+    line-height: 2.1;
+	 text-align: left;
     font-size: 66px;
     font-family: 'Pacifico';
     padding-bottom: 10px;

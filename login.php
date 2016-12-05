@@ -10,10 +10,11 @@
 ?>
 
 <!DOCTYPE HTML>
+
 <html lang="pl">
 <head>
 	<meta charset="utf-8" />
-	<title>Stylizowanie formularzy</title>
+	<title>Pocket World Map</title>
 	<meta name="keywords" content="css, odcinek" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		
@@ -22,6 +23,12 @@
 </head>
 
 <body>
+
+<div id="menu">
+<a href="login.php"><button type="submit" >Home</button></a>
+ <a href="us.html" >  <button type="submit">About Us</button> </a>
+  <a href="about.html"> <button type="submit">Project</button></a>
+</div>
 
 
 	<div id="title">

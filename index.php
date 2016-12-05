@@ -69,6 +69,7 @@ $username=$_SESSION['id'] ;
 
 var map ;
 var iconBase = ' http://labs.google.com/ridefinder/images/';
+var marker = [];
 
 function initMap() {
 
@@ -97,7 +98,7 @@ function initMap() {
 							
 							//document.write(icon);
 							
-						if(user_id==<?php echo $_SESSION['id']?>)	addMarker(lat,lon,nazwa,place,icon);
+						if(user_id==<?php echo $_SESSION['id']?>)	addMarker(lat,lon,nazwa,place,icon,user_id,2);
 				
 						}
 
@@ -189,23 +190,43 @@ function initMap() {
 	}
 	 
 
-    function addMarker(lat,lon,nazwa,place,icon) {
+     function addMarker(lat,lon,nazwa,place,icon,user_id,id) {
+		 
+		 
 	
-          var marker = new google.maps.Marker(
-		  {
+          marker[id] = new google.maps.Marker({
+		  
 			position: new google.maps.LatLng(lat,lon),
 			map: map,
 			icon: iconBase+icon
 		  });
-		   var infowindow = new google.maps.InfoWindow({
-          content: "<b>"+place+"</b></br></br>"+nazwa		  
-				});
 		  
-			marker.addListener('click', function() {
-          infowindow.open(map, marker);
+		  
+		  var  marker_delete_string='<form action = "php/delete_marker.php" method = "post"> <input type="hidden" name="sql_id" value="'+icon+'"> <input name="submit4" type="submit"  class="main" value="Remove"></form>';
+		  var marker_desc_edit='<button onclick="My('+id+')">Click me</button>';
+		   marker[id].infowindow = new google.maps.InfoWindow({
+          content: '<b>'+place+'</b></br></br>'+nazwa+marker_delete_string+marker_desc_edit
+				});
+		
+		  
+			marker[id].addListener('click', function() {
+          marker[id].infowindow.open(map, this);
         });
+		
+	
+		
 				
         }
+		
+			function My(id)
+		{
+			marker[id].infowindow.setContent('Hello world');
+			marker[id].infowindow.close(map,marker);
+				
+			
+		}
+		
+	
 	
 	</script>
 <script async defer
