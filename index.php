@@ -200,11 +200,17 @@ function initMap() {
 			icon: iconBase+icon
 		  });
 		  var  marker_delete_string='<form action = "php/delete_marker.php" method = "post"> <input type="hidden" name="sql_id" value="'+id+'"> <input name="submit4" type="submit"  class="main" value="Remove"></form>';
-		  var marker_desc_edit='<button onclick="myFunction()">Click me</button>';
+		  var marker_desc_edit='<input type="button" value="Show" onclick=edit()/>';
 		   var infowindow = new google.maps.InfoWindow({
           content: '<b>'+place+'</b></br></br>'+nazwa+marker_delete_string+marker_desc_edit
 				});
 		
+		function myfunction(nazwa){
+			
+			function edit(){
+				var e = document.createElement('input'); e.type='text'; e.name = 'added'+this.rel; this.rel = parseFloat(this.rel)+1; this.parentNode.appendChild(e); return false
+			
+	}};
 		  
 			marker.addListener('click', function() {
           infowindow.open(map, marker);
