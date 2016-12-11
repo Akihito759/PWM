@@ -20,12 +20,8 @@ $username=$_SESSION['id'] ;
 		 <body>
 		 <script src="assets/js/jquery-3.1.1.min.js"></script>
 		 
-	<div id="logout">
-	
-		 <form  name="form1" method="post" action="php/logout.php">
 		 
-		 <input name="submit4" type="submit"  class="main" value="Log Out">
-		 
+<<<<<<< HEAD
 		</form>
 	</div>
 	
@@ -35,11 +31,30 @@ $username=$_SESSION['id'] ;
 	
 	<hr width="40%" />
 	</div>
+=======
+		<div id="menu">
+		<a href="login.php"><button type="submit" >Home</button></a>
+		<a href="us.html" >  <button type="submit" >About Us</button> </a>
+		<a href="about.html"> <button type="submit">Project</button></a>
+		</div>
+
+		<div id="logout">
+			<form  name="form1" method="post" action="php/logout.php">
+			<input name="submit4" type="submit"  class="main" value="Log Out"> 
+			</form>
+		</div>
+	
+		<div id="title">
+				Pocket World Map
+				<hr width="20%" />
+		</div>
+>>>>>>> origin/master
 	
 	
 	
 	<input id="searchInput" class="controls" type="text" placeholder="Enter a location">
 <div id="map"></div>
+<<<<<<< HEAD
 <ul id="geoData">
     <li><b>Full Address:</b> <span id="location"></span></li>
    <!-- <li>Postal Code: <span id="postal_code"></span></li> -->
@@ -47,18 +62,26 @@ $username=$_SESSION['id'] ;
     <li><b>Latitude:</b> <span id="lat"></span></li>
     <li><b>Longitude:</b> <span id="lon"></span></li>
 </ul>
+=======
+	<ul id="geoData">
+		<li>Full Address: <span id="location"></span></li>
+		<!-- <li>Postal Code: <span id="postal_code"></span></li> -->
+		<li>Country: <span id="country"></span></li>
+		<li>Latitude: <span id="lat"></span></li>
+		<li>Longitude: <span id="lon"></span></li>
+	</ul>
+>>>>>>> origin/master
 
 
 
-			<form action="php/save.php" method="POST">
-			
-<div id="select_marker" class="styled-select">
+		<form action="php/save.php" method="POST">
+		<div id="select_marker" class="styled-select">
 			<select name="icon">
-  <option value="mm_20_yellow.png"> I was there</option>
-  <option value="mm_20_blue.png">I want to visit </option>
-  <option value="mm_20_red.png">My own marker</option>
-</select>			
-</div>
+				<option value="mm_20_yellow.png"> I was there</option>
+				<option value="mm_20_blue.png">I want to visit </option>
+				<option value="mm_20_red.png">My own marker</option>
+			</select>			
+		</div>
 
 			<div id="value">
 			
@@ -66,10 +89,12 @@ $username=$_SESSION['id'] ;
 		<div id="send">
 	<input type="submit" >
 </div>
+
 <script>
 
 var map ;
 var iconBase = ' http://labs.google.com/ridefinder/images/';
+var marker = [];
 
 function initMap() {
 
@@ -99,7 +124,11 @@ function initMap() {
 							
 							//document.write(icon);
 							
+<<<<<<< HEAD
 						if(user_id==<?php echo $_SESSION['id']?>)	addMarker(lat,lon,nazwa,place,icon,user_id,id);
+=======
+						if(user_id==<?php echo $_SESSION['id']?>)	addMarker(lat,lon,nazwa,place,icon,user_id,2);
+>>>>>>> origin/master
 				
 						}
 
@@ -191,14 +220,21 @@ function initMap() {
 	}
 	 
 
+<<<<<<< HEAD
     function addMarker(lat,lon,nazwa,place,icon,user_id,id) {
+=======
+     function addMarker(lat,lon,nazwa,place,icon,user_id,id) {
+		 
+		 
+>>>>>>> origin/master
 	
-          var marker = new google.maps.Marker(
-		  {
+          marker[id] = new google.maps.Marker({
+		  
 			position: new google.maps.LatLng(lat,lon),
 			map: map,
 			icon: iconBase+icon
 		  });
+<<<<<<< HEAD
 		  var  marker_delete_string='<form action = "php/delete_marker.php" method = "post"> <input type="hidden" name="sql_id" value="'+id+'"> <input name="submit4" type="submit"  class="main" value="Remove"></form>';
 		  var marker_desc_edit='<input type="button" value="Show" onclick=edit()/>';
 		   var infowindow = new google.maps.InfoWindow({
@@ -211,12 +247,35 @@ function initMap() {
 				var e = document.createElement('input'); e.type='text'; e.name = 'added'+this.rel; this.rel = parseFloat(this.rel)+1; this.parentNode.appendChild(e); return false
 			
 	}};
+=======
 		  
-			marker.addListener('click', function() {
-          infowindow.open(map, marker);
+		  
+		  var  marker_delete_string='<form action = "php/delete_marker.php" method = "post"> <input type="hidden" name="sql_id" value="'+icon+'"> <input name="submit4" type="submit"  class="main" value="Remove"></form>';
+		  var marker_desc_edit='<button onclick="My('+id+')">Click me</button>';
+		   marker[id].infowindow = new google.maps.InfoWindow({
+          content: '<b>'+place+'</b></br></br>'+nazwa+marker_delete_string+marker_desc_edit
+				});
+		
+>>>>>>> origin/master
+		  
+			marker[id].addListener('click', function() {
+          marker[id].infowindow.open(map, this);
         });
+		
+	
+		
 				
         }
+		
+			function My(id)
+		{
+			marker[id].infowindow.setContent('Hello world');
+			marker[id].infowindow.close(map,marker);
+				
+			
+		}
+		
+	
 	
 	</script>
 <script async defer
