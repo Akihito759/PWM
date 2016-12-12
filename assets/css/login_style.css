@@ -172,6 +172,8 @@ input[type=submit].main
 
 }
 
+
+
 input[type=submit].menu
 {
     width: 150px;
@@ -199,6 +201,37 @@ position: relative;
 width:500px;
 z-index:2;
 position:relative;
+}
+
+input[type=submit].infowindow
+{
+   width: 60px;
+    background-color: #36b03c;
+    font-size: 10px;
+    color: white;
+    padding: 15px 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    outline: none;
+	display: inline-block;
+}
+
+button.infowindow{
+	width: 60px;
+    background-color: #36b03c;
+    font-size: 10px;
+    color: white;
+    padding: 15px 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    outline: none;
+	display: inline-block;
 }
 
 input[type=submit]:focus

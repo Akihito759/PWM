@@ -236,10 +236,11 @@ function initMap() {
 
 
 		var nazwa2="'"+nazwa+"'";
+		var place2= "'"+place+"'";
+		
 		  
-		  
-		  var  marker_delete_string='<form action = "php/delete_marker.php" method = "post"> <input type="hidden" name="sql_id" value="'+id+'"> <input name="submit4" type="submit"  class="main" value="Remove"></form>';
-		  var marker_desc_edit='<button onclick="My('+id+','+nazwa2+')">Edit</button>';
+		  var  marker_delete_string='</br><form action = "php/delete_marker.php" method = "post" style="display: inline-block;"> <input type="hidden" name="sql_id" value="'+id+'"> <input name="submit4" type="submit"  class="infowindow" value="Remove"></form>';
+		  var marker_desc_edit='<button class="infowindow" onclick="My('+id+','+nazwa2+')">Edit</button>';
 		  
 		   marker[id].infowindow = new google.maps.InfoWindow({
           content: '<b>'+place+'</b></br></br>'+nazwa+marker_delete_string+marker_desc_edit
@@ -259,9 +260,11 @@ function initMap() {
 					function My(id_my,nazwa2)
 		{
 			//marker[id_my].infowindow.close(map,this);
+			var history=marker[id_my].infowindow.getContent(map,this);
+			var a='<button class="infowindow" style="margin-left: 2px;"onclick="window.location.reload() ">Cancel</button>';
 			marker[id_my].infowindow.setContent('<form action="php/edit.php" method="POST"><input name="edit_name" type="text" value="' +nazwa2+
 			'" ><input name="edit_id" type="hidden" value="' +id_my+
-			'" ><input type="submit" value="Save Changes"></form>'  );
+			'" ></br><input type="submit" class="main" style="width: 50%; display: inline-block;" value="Save Changes"><button class="main" style="width: 50%; display:inline-block;"onclick="window.location.reload() ">Cancel</button></form>');
 			
 			
 		}
