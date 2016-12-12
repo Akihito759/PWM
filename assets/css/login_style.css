@@ -60,25 +60,33 @@ html, body {
 li{
 color: white;
 }
-<<<<<<< HEAD
+
 p{
 color: white;
 }
 
-=======
+
 #send
 {
-	left: 450px;
+    left: 30%;
     position: relative;
+    display: inline-block;
 }
->>>>>>> origin/master
+
+#cancel
+{
+	margin-left: 30%;
+    display: inline-block;
+}
+
+
 
 #value
 {
 color: white;
     position: relative;
-    left: 200px;
-    margin-top: -150px;
+	margin-left: 25%;
+    margin-top: -8%;
 }
 
 #logout
@@ -248,10 +256,8 @@ input[type=submit]:hover
 
 #title
 {
-<<<<<<< HEAD
+
 	margin-top: -50px;
-=======
->>>>>>> origin/master
 	font-family: 'Pacifico';
 	color: white;
 	font-weight: 500;

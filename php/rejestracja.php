@@ -178,6 +178,14 @@
 
 
 <body>
+
+<div id="menu">
+<a href="../login.php"><button type="submit" >Home</button></a>
+ <a href="../us.html" >  <button type="submit">About Us</button> </a>
+  <a href="../about.html"> <button type="submit">Project</button></a>
+</div>
+
+
 	<div id="title">
 	Pocket World Map
 	
@@ -283,7 +291,7 @@
 	
 	<br/>
 	
-	<input type="submit" value="Sing Up"/>
+	<input type="submit" value="Sign Up"/>
 	</div>
 	</form>
 

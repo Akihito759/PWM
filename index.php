@@ -10,28 +10,26 @@ $username=$_SESSION['id'] ;
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<link rel="stylesheet" href="assets/css/login_style.css" type="text/css" />    
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		
   <!--       <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script> 
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVtnvK6oPtm7mEol6V11ruo4nReAjCmoE"></script>
         <link rel="stylesheet" href="css/jquery-ui-1.8.18.custom.css"/>
 		 <body onload="initialize()">
-		 --> </head>
+		 --> 
+		 </head>
 		 
 		 <body>
 		 <script src="assets/js/jquery-3.1.1.min.js"></script>
 		 
 		 
-<<<<<<< HEAD
+
 		</form>
 	</div>
 	
-	<!--<p>Welcome <?php // echo $username; ?> </p> -->
-	<div id="title">
-	Pocket World Map
-	
-	<hr width="40%" />
-	</div>
-=======
+
+
+
 		<div id="menu">
 		<a href="login.php"><button type="submit" >Home</button></a>
 		<a href="us.html" >  <button type="submit" >About Us</button> </a>
@@ -48,13 +46,14 @@ $username=$_SESSION['id'] ;
 				Pocket World Map
 				<hr width="20%" />
 		</div>
->>>>>>> origin/master
+
 	
 	
 	
 	<input id="searchInput" class="controls" type="text" placeholder="Enter a location">
 <div id="map"></div>
-<<<<<<< HEAD
+
+
 <ul id="geoData">
     <li><b>Full Address:</b> <span id="location"></span></li>
    <!-- <li>Postal Code: <span id="postal_code"></span></li> -->
@@ -62,19 +61,11 @@ $username=$_SESSION['id'] ;
     <li><b>Latitude:</b> <span id="lat"></span></li>
     <li><b>Longitude:</b> <span id="lon"></span></li>
 </ul>
-=======
-	<ul id="geoData">
-		<li>Full Address: <span id="location"></span></li>
-		<!-- <li>Postal Code: <span id="postal_code"></span></li> -->
-		<li>Country: <span id="country"></span></li>
-		<li>Latitude: <span id="lat"></span></li>
-		<li>Longitude: <span id="lon"></span></li>
-	</ul>
->>>>>>> origin/master
+
+	
 
 
-
-		<form action="php/save.php" method="POST">
+		<form action="php/save.php" method="POST" style="display: inline;">
 		<div id="select_marker" class="styled-select">
 			<select name="icon">
 				<option value="mm_20_yellow.png"> I was there</option>
@@ -83,13 +74,28 @@ $username=$_SESSION['id'] ;
 			</select>			
 		</div>
 
+		
+
 			<div id="value">
 			
 			</div>
-		<div id="send">
-	<input type="submit" >
+			
+<div id="send">
+		 <?php
+  if(isset($_SESSION['blad_sql']))	echo $_SESSION['blad_sql'];
+   unset($_SESSION['blad_sql']);
+  ?>
+</br>
+	<input type="submit"    value="Send Markers">
+	</form>
 </div>
 
+<div id="cancel">
+<form method="post" action=" " onSubmit="window.location.reload()" style="display: inline;">
+<input type="submit" value="Cancel">
+</form>
+
+</div>	
 <script>
 
 var map ;
@@ -124,11 +130,8 @@ function initMap() {
 							
 							//document.write(icon);
 							
-<<<<<<< HEAD
+
 						if(user_id==<?php echo $_SESSION['id']?>)	addMarker(lat,lon,nazwa,place,icon,user_id,id);
-=======
-						if(user_id==<?php echo $_SESSION['id']?>)	addMarker(lat,lon,nazwa,place,icon,user_id,2);
->>>>>>> origin/master
 				
 						}
 
@@ -220,13 +223,9 @@ function initMap() {
 	}
 	 
 
-<<<<<<< HEAD
-    function addMarker(lat,lon,nazwa,place,icon,user_id,id) {
-=======
+
      function addMarker(lat,lon,nazwa,place,icon,user_id,id) {
 		 
-		 
->>>>>>> origin/master
 	
           marker[id] = new google.maps.Marker({
 		  
@@ -234,46 +233,39 @@ function initMap() {
 			map: map,
 			icon: iconBase+icon
 		  });
-<<<<<<< HEAD
+
+
+		var nazwa2="'"+nazwa+"'";
+		  
+		  
 		  var  marker_delete_string='<form action = "php/delete_marker.php" method = "post"> <input type="hidden" name="sql_id" value="'+id+'"> <input name="submit4" type="submit"  class="main" value="Remove"></form>';
-		  var marker_desc_edit='<input type="button" value="Show" onclick=edit()/>';
-		   var infowindow = new google.maps.InfoWindow({
-          content: '<b>'+place+'</b></br></br>'+nazwa+marker_delete_string+marker_desc_edit
-				});
-		
-		function myfunction(nazwa){
-			
-			function edit(){
-				var e = document.createElement('input'); e.type='text'; e.name = 'added'+this.rel; this.rel = parseFloat(this.rel)+1; this.parentNode.appendChild(e); return false
-			
-	}};
-=======
+		  var marker_desc_edit='<button onclick="My('+id+','+nazwa2+')">Edit</button>';
 		  
-		  
-		  var  marker_delete_string='<form action = "php/delete_marker.php" method = "post"> <input type="hidden" name="sql_id" value="'+icon+'"> <input name="submit4" type="submit"  class="main" value="Remove"></form>';
-		  var marker_desc_edit='<button onclick="My('+id+')">Click me</button>';
 		   marker[id].infowindow = new google.maps.InfoWindow({
           content: '<b>'+place+'</b></br></br>'+nazwa+marker_delete_string+marker_desc_edit
 				});
-		
->>>>>>> origin/master
 		  
 			marker[id].addListener('click', function() {
           marker[id].infowindow.open(map, this);
+		  
         });
 		
 	
+
 		
 				
         }
 		
-			function My(id)
+					function My(id_my,nazwa2)
 		{
-			marker[id].infowindow.setContent('Hello world');
-			marker[id].infowindow.close(map,marker);
-				
+			//marker[id_my].infowindow.close(map,this);
+			marker[id_my].infowindow.setContent('<form action="php/edit.php" method="POST"><input name="edit_name" type="text" value="' +nazwa2+
+			'" ><input name="edit_id" type="hidden" value="' +id_my+
+			'" ><input type="submit" value="Save Changes"></form>'  );
+			
 			
 		}
+
 		
 	
 	

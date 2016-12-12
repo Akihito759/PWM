@@ -32,6 +32,14 @@ $connection->query("INSERT INTO markers VALUES".$sql);
 
 ======= */
 
+
+if(!isset($_POST['value']))
+{
+	$_SESSION['blad_sql']= '<span style="color:red"> Please add markers by search engine </span>';
+	header("Location:../index.php");
+	exit();
+}
+
 $connection=new mysqli($host,$db_user,$db_password,$db_name);
 if($connection->connect_errno!=0){
 	echo "Error:".$connection->connect_errno;
