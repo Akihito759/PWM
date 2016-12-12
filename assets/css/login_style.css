@@ -205,7 +205,7 @@ position:relative;
 
 input[type=submit].infowindow
 {
-   width: 60px;
+   width: 100px;
     background-color: #36b03c;
     font-size: 10px;
     color: white;
@@ -220,7 +220,7 @@ input[type=submit].infowindow
 }
 
 button.infowindow{
-	width: 60px;
+	width: 100px;
     background-color: #36b03c;
     font-size: 10px;
     color: white;
@@ -239,6 +239,17 @@ input[type=submit]:focus
 	webkit-box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
 	-moz-box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
 	box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+}
+
+button:focus
+{
+	webkit-box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+	-moz-box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+	box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+}
+
+button:hover{
+	background-color: #FF6347;
 }
 
 input[type=submit]:hover
